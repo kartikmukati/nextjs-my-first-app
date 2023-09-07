@@ -1,29 +1,11 @@
-'use client'
-
-import Link from "next/link";
-import { getFeaturedEvents } from "../../dummy-data"
-import EventList from "../../components/events/event-list";
-import { Fragment } from "react";
-import Button from "../../components/ui/button";
-import EventSearch from "../../components/events/events-search";
-import { useRouter } from 'next/navigation'
 
 export default function Home() {
 
-  const router = useRouter();
-
-  const filteredData = getFeaturedEvents();
-
-  const findFilteredData = (year, month) => {
-    const fullPath = `/events/${year}/${month}`
-    router.push(fullPath);
-  }
-
   return (
-    <Fragment>
-      <Button link={'/events'}><span>All Events</span></Button>
-      <EventSearch onSearch={findFilteredData}></EventSearch>
-      <EventList items={filteredData}/>
-    </Fragment>
+   <ul>
+    <li> Product 1</li>
+    <li> Product 2</li>
+    <li> Product 3</li>
+   </ul>
   )
 }
