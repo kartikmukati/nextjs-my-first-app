@@ -1,11 +1,19 @@
+import path from 'path';
+import {promises as fs} from 'fs';
 
-export default function Home() {
+
+export default async function Home(props) {
+
+  const jsonDirectory = path.join(process.cwd(), 'data');
+  const staticData = await fs.readFile(jsonDirectory + '/dummy-backend.json', 'utf8');
+  const products = JSON.parse(staticData).products;
 
   return (
    <ul>
-    <li> Product 1</li>
-    <li> Product 2</li>
-    <li> Product 3</li>
+    {products.map(product => (
+      <li key={product.id}> <h1>{product.title}</h1></li>
+    ))}
    </ul>
   )
 }
+
